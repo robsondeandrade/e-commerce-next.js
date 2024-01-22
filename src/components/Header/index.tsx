@@ -15,7 +15,10 @@ const Header = () => {
         <S.SubLogo>Sistemas</S.SubLogo>
       </S.LogoContainer>
 
-      <S.CartContainer onClick={() => setOpenModal(true)}>
+      <S.CartContainer
+        data-testid="cart-container"
+        onClick={() => setOpenModal(true)}
+      >
         <S.CartIcon />
         <S.CartValue>{products?.length}</S.CartValue>
       </S.CartContainer>
