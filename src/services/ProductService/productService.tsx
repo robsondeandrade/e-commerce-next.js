@@ -1,4 +1,3 @@
-// src/services/productService.ts
 import api from "../api";
 import { IGetProductsParams } from "./types";
 
