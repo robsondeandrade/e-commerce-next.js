@@ -25,7 +25,7 @@ export const CardProduct = ({ product }: IParamsComponent) => {
 
       <S.FooterContent onClick={() => handleAddProduct(product)}>
         <RiShoppingBag3Line />
-        Comprar
+        Adicionar ao carrinho
       </S.FooterContent>
     </S.Container>
   );
