@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import Header from ".";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
@@ -13,7 +13,7 @@ jest.mock("next/navigation", () => ({
 }));
 
 describe("Header", () => {
-  it("should be return component correct", () => {
+  it("should render the component correctly", () => {
     const { container } = render(
       <ThemeProvider theme={theme}>
         <Provider store={store}>
@@ -24,8 +24,8 @@ describe("Header", () => {
     expect(container).toBeInTheDocument();
   });
 
-  it("toggles the cart modal state correctly", () => {
-    const { getByTestId } = render(
+  it("should toggle the cart modal state correctly", () => {
+    const { getByTestId, queryByTestId } = render(
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <Header />
@@ -35,5 +35,17 @@ describe("Header", () => {
 
     const cartContainer = getByTestId("cart-container");
     expect(cartContainer).toHaveTextContent("0");
+
+    fireEvent.click(cartContainer);
+
+    expect(queryByTestId("cart-container")).toBeInTheDocument();
+
+    const closeButton = queryByTestId("close-button");
+    if (closeButton) {
+      fireEvent.click(closeButton);
+      expect(queryByTestId("close-button")).not.toBeInTheDocument();
+    } else {
+      throw new Error("Botão de fechar não encontrado");
+    }
   });
 });

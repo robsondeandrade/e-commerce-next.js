@@ -14,13 +14,13 @@ export const CartModal = ({ isOpen, onClose }: IParamsComponent) => {
 
   return (
     <S.ModalOverlay>
-      <S.ModalContent>
+      <S.ModalContent data-testid="cart-modal">
         <S.HeaderContent>
           <S.TitleModal>
             Carrinho <br /> de compras
           </S.TitleModal>
 
-          <S.CloseButton onClick={onClose}>
+          <S.CloseButton data-testid="close-button" onClick={onClose}>
             <S.CloseIcon>x</S.CloseIcon>
           </S.CloseButton>
         </S.HeaderContent>
