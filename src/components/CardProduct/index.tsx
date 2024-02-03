@@ -1,10 +1,10 @@
+import { useDispatch } from "react-redux";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { formatCurrency } from "@/utils/formatCurrency";
-import { IParamsComponent } from "./types";
-import * as S from "./styles";
-import { useDispatch } from "react-redux";
 import { IProducts } from "@/stores/productSlice/types";
 import { addProduct } from "@/stores/productSlice";
+import { IParamsComponent } from "./types";
+import * as S from "./styles";
 
 export const CardProduct = ({ product }: IParamsComponent) => {
   const dispatch = useDispatch();

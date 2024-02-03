@@ -59,6 +59,7 @@ export const SpanQuantidy = styled.span`
 
 export const ContentAmount = styled.div`
   background-color: ${({ theme }) => theme.colors.tertiary};
+  padding: 0 10px;
   min-width: 84px;
   height: 26px;
   border-radius: 5px;

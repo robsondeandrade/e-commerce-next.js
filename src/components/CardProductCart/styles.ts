@@ -24,7 +24,7 @@ export const Content = styled.div`
   gap: 16px;
   justify-content: center;
   align-items: center;
-  padding-right: 20px;
+  padding: 10px 20px;
 `;
 
 export const BoxInfo = styled.div`

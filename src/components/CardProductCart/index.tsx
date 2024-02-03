@@ -1,14 +1,14 @@
 import React from "react";
-import * as S from "./styles";
-import { IParamsComponent } from "./types";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
 import {
   decreaseQuantity,
   increaseQuantity,
   removeProduct,
 } from "@/stores/productSlice";
 import { formatCurrency } from "@/utils/formatCurrency";
-import Image from "next/image";
+import { IParamsComponent } from "./types";
+import * as S from "./styles";
 
 export const CardProductCart = ({ product }: IParamsComponent) => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ export const CardProductCart = ({ product }: IParamsComponent) => {
         <Image
           src={product.thumbnail}
           alt={product.title}
-          width={100}
+          width={90}
           height={80}
         />
         <S.BoxInfo>

@@ -1,9 +1,9 @@
+import { useSelector } from "react-redux";
 import { CardProductCart } from "../CardProductCart";
 import { calculateTotalAmount } from "@/utils/calculateTotalAmount";
-import { IParamsComponent } from "./types";
 import { formatCurrency } from "@/utils/formatCurrency";
-import { useSelector } from "react-redux";
 import { IProducts } from "@/stores/productSlice/types";
+import { IParamsComponent } from "./types";
 import * as S from "./styles";
 
 export const CartModal = ({ isOpen, onClose }: IParamsComponent) => {

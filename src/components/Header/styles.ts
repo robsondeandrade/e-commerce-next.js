@@ -20,7 +20,7 @@ export const LogoContainer = styled.div`
   color: ${({ theme }) => theme.colors.secondary};
 `;
 
-export const MainLogo = styled.h1`
+export const MainLogo = styled.h2`
   font-weight: 600;
   font-size: 40px;
   margin: 28px 0 29px 65px;

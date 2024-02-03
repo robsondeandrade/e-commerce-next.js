@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { CartModal } from "../ModalCart";
 import * as S from "./styles";
-import { useSelector } from "react-redux";
 
 const Header = () => {
   const products = useSelector((state: any) => state.product.products);
