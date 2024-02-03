@@ -7,6 +7,8 @@ import {
   increaseQuantity,
   removeProduct,
 } from "@/stores/productSlice";
+import { formatCurrency } from "@/utils/formatCurrency";
+import Image from "next/image";
 
 export const CardProductCart = ({ product }: IParamsComponent) => {
   const dispatch = useDispatch();
@@ -27,27 +29,38 @@ export const CardProductCart = ({ product }: IParamsComponent) => {
       <S.CloseButton onClick={() => handleRemoveProduct(product.id)}>
         <S.CloseIcon>x</S.CloseIcon>
       </S.CloseButton>
-      <S.GridContainer>
-        <S.Photo src={product.photo} />
-        <S.Typography>{product.name}</S.Typography>
-        <S.ContainerQuantity>
-          <S.SpanQuantidy>Qtd:</S.SpanQuantidy>
-          <S.ContentQuantity>
-            <S.TypographyValue
-              onClick={() => handleDecreaseQuantity(product.id)}
-            >
-              -
-            </S.TypographyValue>
-            <S.TypographyValue>{product.quantity}</S.TypographyValue>
-            <S.TypographyValue
-              onClick={() => handleIncreaseQuantity(product.id)}
-            >
-              +
-            </S.TypographyValue>
-          </S.ContentQuantity>
-        </S.ContainerQuantity>
-        <S.Amount>R${product.price * product.quantity}</S.Amount>
-      </S.GridContainer>
+      <S.Content>
+        <Image
+          src={product.thumbnail}
+          alt={product.title}
+          width={100}
+          height={80}
+        />
+        <S.BoxInfo>
+          <S.Typography>{product.title}</S.Typography>
+          <S.BoxValue>
+            <S.ContainerQuantity>
+              <S.SpanQuantidy>Qtd:</S.SpanQuantidy>
+              <S.ContentQuantity>
+                <S.TypographyValue
+                  onClick={() => handleDecreaseQuantity(product.id)}
+                >
+                  -
+                </S.TypographyValue>
+                <S.TypographyValue>{product.quantity}</S.TypographyValue>
+                <S.TypographyValue
+                  onClick={() => handleIncreaseQuantity(product.id)}
+                >
+                  +
+                </S.TypographyValue>
+              </S.ContentQuantity>
+            </S.ContainerQuantity>
+            <S.Amount>
+              R${formatCurrency(product.price * product.quantity)}
+            </S.Amount>
+          </S.BoxValue>
+        </S.BoxInfo>
+      </S.Content>
     </S.Container>
   );
 };

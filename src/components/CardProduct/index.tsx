@@ -15,16 +15,13 @@ export const CardProduct = ({ product }: IParamsComponent) => {
 
   return (
     <S.Container>
-      <S.Photo src={product?.photo} />
+      <S.Photo src={product?.thumbnail} />
       <S.ContainerDetails>
-        <S.NameProduct>{product?.name}</S.NameProduct>
-        <S.ContentAmount>
-          <S.Amount>R${formatCurrency(product?.price)}</S.Amount>
-        </S.ContentAmount>
+        <S.NameProduct>{product?.title}</S.NameProduct>
       </S.ContainerDetails>
-      <S.ContentDescription>
-        <S.Description>{product?.description}</S.Description>
-      </S.ContentDescription>
+      <S.ContentAmount>
+        <S.Amount>R${formatCurrency(product?.price)}</S.Amount>
+      </S.ContentAmount>
 
       <S.FooterContent onClick={() => handleAddProduct(product)}>
         <RiShoppingBag3Line />

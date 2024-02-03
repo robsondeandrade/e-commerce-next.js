@@ -4,7 +4,7 @@ export const calculateTotalAmount = (products: IProducts[]) => {
   let totalAmount = 0;
 
   for (const product of products) {
-    const price = parseFloat(product.price);
+    const price = product.price;
     const quantity = product.quantity;
 
     const subtotal = price * quantity;

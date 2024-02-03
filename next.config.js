@@ -6,7 +6,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["i.annihil.us"],
+    domains: ['http2.mlstatic.com'],
   },
 };
 

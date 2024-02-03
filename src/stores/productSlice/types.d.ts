@@ -1,14 +1,11 @@
 export interface IProducts {
   id: string;
-  name: string;
+  title: string;
   brand: string;
   quantity: number;
   description: string;
-  photo: string;
-  price: string;
-  createdAt: string;
-  updatedAt: string;
-  quantidy: number;
+  thumbnail: string;
+  price: number;
 }
 
 export interface IProductState {

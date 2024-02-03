@@ -6,8 +6,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 8px;
-  width: 230px;
-  height: 285px;
+  width: 240px;
+  height: 320px;
   margin: 5px 22px 28px;
   box-shadow: 0px 2px 8px 0px #00000022;
   position: relative;
@@ -23,8 +23,6 @@ export const NameProduct = styled.span`
   color: ${({ theme }) => theme.colors.tertiary};
   font-size: 16px;
   font-weight: 400;
-  line-height: 19px;
-  max-width: 124px;
   margin-bottom: 8px;
 `;
 
@@ -38,6 +36,7 @@ export const Description = styled.span`
 
 export const ContainerDetails = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 90%;
   align-items: flex-start;
@@ -64,8 +63,11 @@ export const ContentAmount = styled.div`
   height: 26px;
   border-radius: 5px;
   display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
+  bottom: 40px;
+  right: 0;
 `;
 
 export const Amount = styled.span`
@@ -78,7 +80,7 @@ export const Amount = styled.span`
 export const FooterContent = styled.button`
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.secondary};
-  width: 230px;
+  width: 240px;
   height: 31.91px;
   display: flex;
   position: absolute;

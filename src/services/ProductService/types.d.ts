@@ -1,4 +1,5 @@
 export interface IGetProductsParams {
-  page: number;
-  rows: number;
+  search: string;
+  offset: number;
+  limit: number;
 }

@@ -8,36 +8,47 @@ export const Container = styled.div`
   border-radius: 8px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
   margin: auto;
   margin: 5px auto 28px;
   box-shadow: -2px 2px 10px 0px #0000000d;
+
   @media (max-width: 480px) {
     width: 359px;
   }
 `;
 
-export const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: 75px 110px 35px 50px;
+export const Content = styled.div`
+  display: flex;
   gap: 16px;
   justify-content: center;
   align-items: center;
   padding-right: 20px;
 `;
 
-export const Photo = styled.img`
-  max-width: 55px;
-  margin-left: 23px;
+export const BoxInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding-right: 20px;
+`;
+
+export const BoxValue = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding-right: 20px;
 `;
 
 export const Typography = styled.span`
   color: ${({ theme }) => theme.colors.tertiary};
   font-size: 13px;
   font-weight: 400;
-  line-height: 17px;
-  letter-spacing: 0px;
   text-align: left;
-  max-width: 113px;
   margin-right: 12px;
 `;
 
@@ -69,7 +80,7 @@ export const ContentQuantity = styled.div`
 
 export const TypographyValue = styled.span`
   color: ${({ theme }) => theme.colors.tertiary};
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 400;
   line-height: 17px;
   margin: auto;
@@ -78,7 +89,7 @@ export const TypographyValue = styled.span`
 
 export const SpanQuantidy = styled.span`
   color: ${({ theme }) => theme.colors.tertiary};
-  font-size: 5px;
+  font-size: 8px;
   font-weight: 400;
   line-height: 6px;
 `;
