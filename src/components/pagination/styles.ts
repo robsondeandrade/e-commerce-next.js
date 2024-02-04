@@ -13,19 +13,19 @@ export const Wrapper = styled.div`
 
 export const PageButton = styled.button<{
   disabled?: boolean;
-  active?: boolean;
+  $active?: boolean;
 }>`
-  background-color: ${({ active, theme }) =>
-    active ? theme.colors.primary : "transparent"};
-  color: ${({ active, theme }) =>
-    active ? theme.colors.secondary : theme.colors.gray[700]};
+  background-color: ${({ $active, theme }) =>
+    $active ? theme.colors.primary : "transparent"};
+  color: ${({ $active, theme }) =>
+    $active ? theme.colors.secondary : theme.colors.gray[700]};
   padding: 0.5rem 1rem;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   outline: none;
-  border: ${({ active, theme }) =>
-    active ? `2px solid ${theme.colors.secondary}` : "2px solid transparent"};
-  box-shadow: ${({ active }) =>
-    active ? "0px 2px 5px rgba(0, 0, 0, 0.2)" : "none"};
+  border: ${({ $active, theme }) =>
+    $active ? `2px solid ${theme.colors.secondary}` : "2px solid transparent"};
+  box-shadow: ${({ $active }) =>
+    $active ? "0px 2px 5px rgba(0, 0, 0, 0.2)" : "none"};
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -33,8 +33,8 @@ export const PageButton = styled.button<{
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: ${({ disabled, active, theme }) =>
-      !disabled && !active ? theme.colors.lightPrimary : ""};
+    background-color: ${({ disabled, $active, theme }) =>
+      !disabled && !$active ? theme.colors.lightPrimary : ""};
     border-color: ${({ disabled, theme }) =>
       !disabled ? theme.colors.primary : ""};
   }

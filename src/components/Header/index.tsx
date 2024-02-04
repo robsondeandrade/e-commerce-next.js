@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { CartModal } from "../ModalCart";
+import { ModalCart } from "../ModalCart";
 import * as S from "./styles";
 
 const Header = () => {
@@ -22,7 +22,7 @@ const Header = () => {
         <S.CartIcon />
         <S.CartValue>{products?.length}</S.CartValue>
       </S.CartContainer>
-      <CartModal isOpen={openModal} onClose={() => setOpenModal(false)} />
+      <ModalCart isOpen={openModal} onClose={() => setOpenModal(false)} />
     </S.HeaderContainer>
   );
 };

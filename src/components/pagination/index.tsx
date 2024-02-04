@@ -27,7 +27,7 @@ export const CustomPagination = ({
       pageButtons.push(
         <S.PageButton
           key={page}
-          active={page === currentPage}
+          $active={page === currentPage}
           onClick={() => handlePageChange(page)}
         >
           {page}

@@ -29,6 +29,13 @@ export const Title = styled.h1`
   }
 `;
 
+export const NoResults = styled.div`
+  margin-top: 50px;
+  text-align: center;
+  font-size: 18px;
+  color: ${({ theme }) => theme.colors.gray[600]};
+`;
+
 export const BoxSearch = styled.div`
   display: flex;
   align-items: center;

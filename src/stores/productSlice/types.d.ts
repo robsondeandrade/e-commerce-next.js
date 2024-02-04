@@ -6,6 +6,7 @@ export interface IProducts {
   description: string;
   thumbnail: string;
   price: number;
+  available_quantity: number;
 }
 
 export interface IProductState {

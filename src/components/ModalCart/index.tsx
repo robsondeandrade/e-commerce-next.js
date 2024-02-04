@@ -6,19 +6,20 @@ import { IProducts } from "@/stores/productSlice/types";
 import { IParamsComponent } from "./types";
 import * as S from "./styles";
 
-export const CartModal = ({ isOpen, onClose }: IParamsComponent) => {
+export const ModalCart = ({ isOpen, onClose }: IParamsComponent) => {
   const products = useSelector((state: any) => state.product.products);
 
   if (!isOpen) return null;
   const total = calculateTotalAmount(products);
 
   return (
-    <S.ModalOverlay>
-      <S.ModalContent data-testid="cart-modal">
+    <S.ModalOverlay onClick={() => onClose()}>
+      <S.ModalContent
+        data-testid="cart-modal"
+        onClick={(e) => e.stopPropagation()}
+      >
         <S.HeaderContent>
-          <S.TitleModal>
-            Carrinho <br /> de compras
-          </S.TitleModal>
+          <S.TitleModal>Carrinho de compras</S.TitleModal>
 
           <S.CloseButton data-testid="close-button" onClick={onClose}>
             <S.CloseIcon>x</S.CloseIcon>

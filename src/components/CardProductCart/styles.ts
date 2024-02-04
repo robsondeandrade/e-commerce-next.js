@@ -4,7 +4,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary};
   position: relative;
   width: 379px;
-  height: 95px;
+  height: 100px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -24,7 +24,12 @@ export const Content = styled.div`
   gap: 16px;
   justify-content: center;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 10px;
+`;
+
+export const Image = styled.img`
+  max-width: 80px;
+  max-height: 80px;
 `;
 
 export const BoxInfo = styled.div`
@@ -37,11 +42,11 @@ export const BoxInfo = styled.div`
 `;
 
 export const BoxValue = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 16px;
-  padding-right: 20px;
+  padding: 0 10px 0 10px;
+  justify-content: space-between;
 `;
 
 export const Typography = styled.span`
@@ -64,27 +69,28 @@ export const ContainerQuantity = styled.div`
 export const ContentQuantity = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 50px;
-  height: 19px;
+  width: 60px;
+  height: 24px;
   border-radius: 4px;
-  border: 0.3px solid #bfbfbf;
-  x & > * {
+  border: 1px solid ${({ theme }) => theme.colors.gray[300]};
+  & > * {
     flex: 1;
     text-align: center;
-    border-right: 0.3px solid #bfbfbf;
+    border-right: 0.3px solid ${({ theme }) => theme.colors.gray[200]};
     &:last-child {
       border-right: none;
     }
   }
 `;
 
-export const TypographyValue = styled.span`
+export const TypographyValue = styled.span<{
+  $isDisabled?: boolean;
+}>`
   color: ${({ theme }) => theme.colors.tertiary};
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 17px;
   margin: auto;
-  cursor: pointer;
+  cursor: ${({ $isDisabled }) => ($isDisabled ? "not-allowed" : "pointer")};
 `;
 
 export const SpanQuantidy = styled.span`
@@ -96,10 +102,9 @@ export const SpanQuantidy = styled.span`
 
 export const Amount = styled.span`
   color: ${({ theme }) => theme.colors.tertiary};
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   text-align: left;
-  margin-left: 40px;
   @media (max-width: 480px) {
     margin-left: 30px;
   }

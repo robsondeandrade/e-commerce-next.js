@@ -9,6 +9,8 @@ export const ModalOverlay = styled.div`
   z-index: 999;
   display: flex;
   justify-content: flex-end;
+  backdrop-filter: blur(1px);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const ModalContent = styled.div`
@@ -24,6 +26,7 @@ export const ModalContent = styled.div`
 export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const CloseButton = styled.div`
@@ -49,11 +52,8 @@ export const CloseIcon = styled.p`
 export const TitleModal = styled.h2`
   font-size: 27px;
   font-weight: 700;
-  line-height: 33px;
-  letter-spacing: 0em;
   text-align: left;
   margin: 36px 47px;
-  max-width: 180px;
 `;
 
 export const Description = styled.h2`

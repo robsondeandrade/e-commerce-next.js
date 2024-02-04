@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { formatCurrency } from "@/utils/formatCurrency";
@@ -9,9 +10,12 @@ import * as S from "./styles";
 export const CardProduct = ({ product }: IParamsComponent) => {
   const dispatch = useDispatch();
 
-  const handleAddProduct = (product: IProducts) => {
-    dispatch(addProduct(product));
-  };
+  const handleAddProduct = useCallback(
+    (product: IProducts) => {
+      dispatch(addProduct(product));
+    },
+    [dispatch]
+  );
 
   return (
     <S.Container>

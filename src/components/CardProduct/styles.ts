@@ -75,7 +75,7 @@ export const Amount = styled.span`
   color: ${({ theme }) => theme.colors.secondary};
   font-size: 14px;
   font-weight: 700;
-  line-height: 17px;
+  line-height: 14px;
 `;
 
 export const FooterContent = styled.button`
@@ -83,8 +83,8 @@ export const FooterContent = styled.button`
   color: ${({ theme }) => theme.colors.secondary};
   width: 240px;
   height: 31.91px;
-  display: flex;
   position: absolute;
+  display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 0 0 8px 8px;
@@ -92,7 +92,9 @@ export const FooterContent = styled.button`
   bottom: 0;
   font-size: 14px;
   font-weight: 600;
-  line-height: 18px;
   gap: 14px;
   cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primaryDark};
+  }
 `;
