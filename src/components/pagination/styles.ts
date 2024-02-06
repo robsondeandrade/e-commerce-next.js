@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
   font-size: 0.875rem;
   color: ${({ theme }) => theme.colors.primary};
   margin: 2rem 0;
+  @media (max-width: 540px) {
+    gap: 0.5rem;
+  }
 `;
 
 export const PageButton = styled.button<{
@@ -38,6 +41,10 @@ export const PageButton = styled.button<{
     border-color: ${({ disabled, theme }) =>
       !disabled ? theme.colors.primary : ""};
   }
+
+  @media (max-width: 540px) {
+    padding: 0.2rem 0.2rem;
+  }
 `;
 
 export const PageSelect = styled.select`
@@ -50,5 +57,9 @@ export const PageSelect = styled.select`
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.secondary};
+  }
+  @media (max-width: 540px) {
+    margin-left: 0;
+    padding: 0.2rem;
   }
 `;

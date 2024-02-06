@@ -3,7 +3,7 @@ import { ImCart } from "react-icons/im";
 
 export const HeaderContainer = styled.header`
   width: 100vw;
-  height: 101px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   top: 0;

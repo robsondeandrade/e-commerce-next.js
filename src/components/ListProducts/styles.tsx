@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   max-width: 1438px;
   flex-wrap: wrap;
-  margin: 200px auto 0;
+  margin: 150px auto 0;
   justify-content: center;
   @media (max-width: 851px) {
     align-items: center;
@@ -43,6 +43,7 @@ export const BoxSearch = styled.div`
   margin: 0 32px 32px 32px;
   gap: 16px;
   @media (max-width: 851px) {
+    margin: 0 0 32px 0;
     flex-direction: column;
   }
 `;

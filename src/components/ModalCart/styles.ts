@@ -42,7 +42,7 @@ export const CloseButton = styled.div`
   background-color: ${({ theme }) => theme.colors.tertiary};
 `;
 
-export const CloseIcon = styled.p`
+export const CloseIcon = styled.h2`
   color: ${({ theme }) => theme.colors.secondary};
   font-size: 28px;
   font-weight: 400;
@@ -81,7 +81,7 @@ export const FooterContent = styled.div`
 
 export const ContentBotton = styled.button`
   width: 486px;
-  height: 97px;
+  height: 75px;
   background-color: ${({ theme }) => theme.colors.tertiary};
   display: flex;
   align-items: center;
@@ -98,7 +98,7 @@ export const ContentValue = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  margin-bottom: 42px;
+  margin-bottom: 16px;
   @media (max-width: 480px) {
     justify-content: center;
     gap: 20px;
@@ -107,13 +107,13 @@ export const ContentValue = styled.div`
 `;
 
 export const ValueCurrency = styled.span`
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
 `;
 
-export const FinishPurchase = styled.p`
+export const FinishPurchase = styled.span`
   color: ${({ theme }) => theme.colors.secondary};
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   line-height: 15px;
   margin: auto;
@@ -122,7 +122,7 @@ export const FinishPurchase = styled.p`
 export const BodyContent = styled.div`
   overflow-y: auto;
   flex: 1;
-  max-height: calc(100vh - 310px);
+  max-height: calc(100vh - 260px);
   scrollbar-width: thin;
   scrollbar-color: ${({ theme }) => theme.colors.secondary} transparent;
   &::-webkit-scrollbar {

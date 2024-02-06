@@ -7,7 +7,7 @@ export const StyledSelect = styled.select`
   border: 1px solid ${({ theme }) => theme.colors.gray[300]};
   margin: 10px 0;
   cursor: pointer;
-  max-width: 250px;
+  max-width: 235px;
   width: 100%;
   appearance: none;
   background-color: white;

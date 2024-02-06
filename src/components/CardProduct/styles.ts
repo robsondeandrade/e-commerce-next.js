@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   border-radius: 8px;
   width: 240px;
-  height: 320px;
+  height: 300px;
   margin: 5px 22px 28px;
   box-shadow: 0px 2px 8px 0px #00000022;
   position: relative;
@@ -15,7 +15,7 @@ export const Container = styled.div`
 `;
 
 export const Photo = styled.img`
-  height: 138px;
+  height: 100px;
   margin: 18px 0 16px;
 `;
 

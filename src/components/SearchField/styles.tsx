@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SearchContainer = styled.div`
   display: flex;
+  margin: 5px;
 `;
 
 export const SearchInput = styled.input`
@@ -11,8 +12,7 @@ export const SearchInput = styled.input`
   border-radius: 20px 0 0 20px;
   font-size: 16px;
   outline: none;
-  width: 280px;
-
+  width: 250px;
   &:focus {
     border-color: ${({ theme }) => theme.colors.primary};
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);

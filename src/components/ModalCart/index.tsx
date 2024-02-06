@@ -39,15 +39,17 @@ export const ModalCart = ({ isOpen, onClose }: IParamsComponent) => {
           )}
         </S.BodyContent>
 
-        <S.FooterContent>
-          <S.ContentValue>
-            <S.ValueCurrency>Total:</S.ValueCurrency>
-            <S.ValueCurrency>R${formatCurrency(total)}</S.ValueCurrency>
-          </S.ContentValue>
-          <S.ContentBotton>
-            <S.FinishPurchase>Finalizar Compra</S.FinishPurchase>
-          </S.ContentBotton>
-        </S.FooterContent>
+        {products.length !== 0 && (
+          <S.FooterContent>
+            <S.ContentValue>
+              <S.ValueCurrency>Total:</S.ValueCurrency>
+              <S.ValueCurrency>R${formatCurrency(total)}</S.ValueCurrency>
+            </S.ContentValue>
+            <S.ContentBotton>
+              <S.FinishPurchase>Finalizar Compra</S.FinishPurchase>
+            </S.ContentBotton>
+          </S.FooterContent>
+        )}
       </S.ModalContent>
     </S.ModalOverlay>
   );
