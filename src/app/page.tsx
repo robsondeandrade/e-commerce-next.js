@@ -1,5 +1,13 @@
-import { ListProducts } from "@/components/ListProducts";
+import { ListProducts } from '@/components/ListProducts'
+import Head from 'next/head'
 
 export default function Home() {
-  return <ListProducts />;
+    return (
+        <>
+            <Head>
+                <title>Home | RBS</title>
+            </Head>
+            <ListProducts />
+        </>
+    )
 }
