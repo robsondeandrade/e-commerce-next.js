@@ -1,4 +1,4 @@
 export interface IParamsComponent {
-  isOpen: boolean;
-  onClose: () => void;
+    isOpen: boolean
+    onClose: () => void
 }

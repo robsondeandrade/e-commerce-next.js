@@ -1,6 +1,6 @@
 export const calculateTotalPages = (
-  totalItems: number | undefined,
-  itemsPerPage: number | undefined
+    totalItems: number | undefined,
+    itemsPerPage: number | undefined,
 ) => {
-  return totalItems && itemsPerPage ? Math.floor(totalItems / itemsPerPage) : 0;
-};
+    return totalItems && itemsPerPage ? Math.floor(totalItems / itemsPerPage) : 0
+}

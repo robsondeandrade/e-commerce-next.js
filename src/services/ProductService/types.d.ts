@@ -1,6 +1,6 @@
 export interface IGetProductsParams {
-  search?: string;
-  offset?: number;
-  limit?: number;
-  sort?: string;
+    search?: string
+    offset?: number
+    limit?: number
+    sort?: string
 }

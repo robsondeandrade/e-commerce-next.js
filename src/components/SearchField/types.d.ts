@@ -1,3 +1,3 @@
 export interface SearchFieldProps {
-  onSearch: (searchTerm: string) => void;
+    onSearch: (searchTerm: string) => void
 }
