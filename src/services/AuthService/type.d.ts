@@ -8,3 +8,12 @@ export interface NewCredentials {
     email: string
     password: string
 }
+
+interface AxiosError {
+    response?: {
+        data: {
+            message: string
+        }
+        status: number
+    }
+}

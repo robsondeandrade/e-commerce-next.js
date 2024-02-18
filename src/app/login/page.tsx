@@ -1,13 +1,10 @@
-import Head from 'next/head'
 import { Login } from '@/components/Form/Login'
+import { Metadata } from 'next'
 
-const LoginPage = () => (
-    <>
-        <Head>
-            <title>esqueci minha senha | RBS</title>
-        </Head>
-        <Login />
-    </>
-)
+export const metadata: Metadata = {
+    title: 'Login | RBS',
+}
+
+const LoginPage = () => <Login />
 
 export default LoginPage

@@ -1,17 +1,25 @@
 'use client'
 import { useState } from 'react'
+import { setCookie } from 'nookies'
+import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { InputField } from '@/components/InputField'
+import { useLogin } from '@/hooks/useLogin'
 import { ImputPasswordField } from '@/components/ImputPasswordField'
 import { ModalToast } from '@/components/Modals/ModalToast'
+import { LoadingSpinner } from '@/components/Loading/LoadingSpinner'
+import { AxiosError } from '@/services/AuthService/type'
 import { loginSchema, defaultValues } from './constants'
 import { FormData, ToastInfo } from './type'
+import { setUser } from '@/stores/userSlice'
 import * as S from './styles'
 
 export const Login = () => {
     const router = useRouter()
+    const { mutate: doLogin, isLoading } = useLogin()
+    const dispatch = useDispatch()
     const [toastInfo, setToastInfo] = useState<ToastInfo>({
         message: '',
         color: 'success',
@@ -21,18 +29,41 @@ export const Login = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isValid },
     } = useForm({
+        mode: 'onBlur',
         defaultValues: defaultValues,
         resolver: zodResolver(loginSchema),
     })
 
     const handleSignUpClick = () => {
-        router.push('/esqueci-minha-senha')
+        router.push('/register')
     }
 
     const onSubmit = (data: FormData) => {
-        console.log('data', data)
+        doLogin(data, {
+            onSuccess: (response) => {
+                const { accessToken, refreshToken, user } = response
+
+                const options = { maxAge: 7 * 24 * 60 * 60, path: '/' }
+                setCookie(null, 'accessToken', accessToken, options)
+                setCookie(null, 'refreshToken', refreshToken, options)
+                setCookie(null, 'userData', JSON.stringify(user), options)
+                dispatch(setUser(user))
+                router.push('/')
+            },
+            onError: (error) => {
+                const axiosError = error as AxiosError
+                const errorMessage =
+                    axiosError.response?.data.message || 'Ocorreu um erro desconhecido.'
+
+                setToastInfo({
+                    message: errorMessage,
+                    color: 'error',
+                    isVisible: true,
+                })
+            },
+        })
     }
 
     return (
@@ -69,7 +100,12 @@ export const Login = () => {
                     Ainda não tem conta? Crie uma agora!
                 </S.TextButton>
 
-                <S.SubmitButton type='submit'>Entrar</S.SubmitButton>
+                <S.SubmitButton
+                    disabled={!isValid || isLoading}
+                    type='submit'
+                >
+                    {isLoading ? <LoadingSpinner /> : 'Entrar'}
+                </S.SubmitButton>
             </S.LoginForm>
         </S.LoginContainer>
     )

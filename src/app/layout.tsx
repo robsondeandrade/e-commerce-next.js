@@ -28,7 +28,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                 <Provider store={store}>
                                     <GlobalStyle />
                                     <Header />
-
                                     {children}
                                 </Provider>
                             </StyledComponentsRegistry>

@@ -49,12 +49,22 @@ export const SubmitButton = styled.button`
     padding: 15px;
     border-radius: 8px;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.secondary};
     font-size: 16px;
     cursor: pointer;
+    margin: auto;
 
     &:hover {
         filter: brightness(110%);
+    }
+
+    &:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+        filter: none;
     }
 `

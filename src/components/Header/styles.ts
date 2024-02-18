@@ -6,6 +6,7 @@ export const HeaderContainer = styled.header`
     height: 100px;
     display: flex;
     justify-content: space-between;
+    align-content: center;
     top: 0;
     position: fixed;
     width: 100%;
@@ -16,6 +17,7 @@ export const HeaderContainer = styled.header`
 export const LogoContainer = styled.div`
     display: flex;
     align-items: center;
+    cursor: pointer;
     gap: 8px;
     color: ${({ theme }) => theme.colors.secondary};
 `
@@ -47,6 +49,11 @@ export const CartContainer = styled.div`
     @media (max-width: 500px) {
         margin: 29px 10px 27px 0;
     }
+`
+export const Box = styled.div`
+    margin: 29px 60px 27px;
+    display: flex;
+    align-items: center;
 `
 
 export const CartIcon = styled(ImCart)`
