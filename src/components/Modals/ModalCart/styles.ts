@@ -72,7 +72,7 @@ export const FooterContent = styled.div`
     position: absolute;
     justify-content: center;
     flex-direction: column;
-    background-color: red;
+    background-color: ${({ theme }) => theme.colors.error};
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.secondary};
     bottom: -1px;

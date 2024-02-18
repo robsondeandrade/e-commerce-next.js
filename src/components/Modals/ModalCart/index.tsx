@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { CardProductCart } from '../CardProductCart'
+import { CardProductCart } from '../../CardProductCart'
 import { calculateTotalAmount } from '@/utils/calculateTotalAmount'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { IProducts, RootState } from '@/stores/productSlice/types'

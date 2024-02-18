@@ -33,23 +33,15 @@ export const CartIcon = styled(FiShoppingCart)`
     color: ${({ theme }) => theme.colors.primary};
 `
 
-export const Span = styled.span`
-    width: 100%;
-    font-size: 10px;
-    text-align: end;
-    margin: -15px 0 20px;
-    cursor: pointer;
-`
-
 export const TextButton = styled.button`
     width: 100%;
     font-size: 12px;
     text-align: end;
-    margin: -15px 0 20px;
-    cursor: pointer;
+    margin-bottom: 20px;
     background: none;
     border: none;
     padding: 0;
+    cursor: pointer;
 `
 
 export const SubmitButton = styled.button`

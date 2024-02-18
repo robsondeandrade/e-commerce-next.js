@@ -12,6 +12,8 @@ const theme = {
         primaryDark: '#0C3C8C',
         secondary: '#FFFFFF',
         tertiary: '#000',
+        success: '#2ecc71',
+        error: ' #d32f2f',
         gray: {
             100: '#F2F2F2',
             200: '#E5E5E5',

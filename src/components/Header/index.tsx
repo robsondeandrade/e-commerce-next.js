@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { usePathname } from 'next/navigation'
-import { ModalCart } from '../ModalCart'
+import { ModalCart } from '../Modals/ModalCart'
 import { RootState } from '@/stores/productSlice/types'
 import * as S from './styles'
 

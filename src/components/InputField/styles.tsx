@@ -32,3 +32,8 @@ export const Input = styled.input`
         width: 92%;
     }
 `
+export const Error = styled.span`
+    color: ${({ theme }) => theme.colors.error};
+    font-size: 10px;
+    margin: -10px 0 10px;
+`

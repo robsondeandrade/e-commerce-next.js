@@ -1,5 +1,10 @@
 export interface InputFieldProps {
-    label: string
     type: string
-    placeholder: string
+    name?: string
+    label: string
+    value?: string
+    error?: string
+    placeholder?: string
+    onChange?: React.ChangeEventHandler<HTMLInputElement>
+    onBlur?: React.FocusEventHandler<HTMLInputElement>
 }
