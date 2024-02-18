@@ -14,6 +14,20 @@ export const Container = styled.div`
     max-width: 938px;
 `
 
+export const FavoriteButton = styled.button`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.primary};
+
+    &:hover {
+        color: ${({ theme }) => theme.colors.primary};
+    }
+`
+
 export const Thumbnail = styled.img`
     height: 100px;
     margin: 18px 0 16px;

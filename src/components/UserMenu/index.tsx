@@ -1,26 +1,23 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSelector } from 'react-redux'
 import { destroyCookie, parseCookies } from 'nookies'
 import { RootStateUser } from '@/stores/userSlice/type'
+import { getUserInitials } from '@/utils/userHelpers'
 import * as S from './styles'
 
 const UserMenu = () => {
     const router = useRouter()
     const [menuOpen, setMenuOpen] = useState(false)
-    const user = useSelector((state: RootStateUser) => state.userData.user)
+    const [userInitials, setUserInitials] = useState<string | null>(null)
+    const userr = useSelector((state: RootStateUser) => state.userData.user)
 
-    const getUserInitials = (name: string | undefined) => {
-        if (!name) return null
-
-        const names = name.trim().toUpperCase().split(/\s+/)
-        const firstInitial = names[0][0]
-        const secondInitial = names.length > 1 ? names[1][0] : ''
-        return `${firstInitial}${secondInitial}`
-    }
-
-    const userInitials = getUserInitials(user?.name)
+    useEffect(() => {
+        if (userr && userr.name) {
+            setUserInitials(getUserInitials(userr.name))
+        }
+    }, [])
 
     const handleLogout = () => {
         Object.keys(parseCookies()).forEach((cookieName) => {
