@@ -41,6 +41,9 @@ export const StyledInput = styled.input`
     flex-grow: 1;
     padding: 10px;
     width: 315px;
+    @media (max-width: 480px) {
+        width: 92%;
+    }
 `
 
 export const IconContainer = styled.div`

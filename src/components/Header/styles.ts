@@ -54,6 +54,9 @@ export const Box = styled.div`
     margin: 29px 60px 27px;
     display: flex;
     align-items: center;
+    @media (max-width: 500px) {
+        margin: 29px 10px 27px 10px;
+    }
 `
 
 export const CartIcon = styled(ImCart)`

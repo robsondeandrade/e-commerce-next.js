@@ -18,4 +18,12 @@ export class LoginService {
             throw error
         }
     }
+    async refreshAccessToken(refleshToken: any) {
+        try {
+            const { data } = await api.post(`/refresh-token`, refleshToken)
+            return data
+        } catch (error) {
+            throw error
+        }
+    }
 }
