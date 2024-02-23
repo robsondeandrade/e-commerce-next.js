@@ -4,13 +4,15 @@ import { Favorite } from '@/services/FavoriteService/type'
 
 const FAVORITES_QUERY_KEY = 'favorites'
 
-export const useFavorite = () => {
+export const useFavorite = (token?: string | undefined) => {
     const favoriteService = new FavoriteService()
     const queryClient = useQueryClient()
 
     const invalidateFavorites = () => queryClient.invalidateQueries(FAVORITES_QUERY_KEY)
 
-    const favorites = useQuery(FAVORITES_QUERY_KEY, favoriteService.getFavorites)
+    const favorites = useQuery(FAVORITES_QUERY_KEY, favoriteService.getFavorites, {
+        enabled: !!token,
+    })
 
     const { mutate: addFavorite } = useMutation(
         (favoriteData: Favorite) => favoriteService.addFavorite(favoriteData),

@@ -10,8 +10,8 @@ export const StyledSelect = styled.select`
     max-width: 235px;
     width: 100%;
     appearance: none;
-    background-color: white;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" fill="%23007bff"/></svg>');
+    background-color: ${({ theme }) => theme.colors.secondary};
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" fill="%230A1F30"/></svg>');
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 20px;

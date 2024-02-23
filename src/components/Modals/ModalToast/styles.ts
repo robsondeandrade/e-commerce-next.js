@@ -9,7 +9,7 @@ export const ToastContainer = styled.div<ToastContainerProps>`
     z-index: 1050;
     padding: 16px;
     border-radius: 8px;
-    color: #fff;
+    color: ${({ theme }) => theme.colors.secondary};
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.5s ease-out, fadeOut 0.5s ease-out ${({ duration }) => `${duration - 0.5}s`};
 

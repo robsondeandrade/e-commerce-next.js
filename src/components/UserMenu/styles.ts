@@ -28,7 +28,7 @@ export const DropdownMenu = styled.div`
     position: absolute;
     top: 60px;
     right: 0;
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.secondary};
     min-width: 160px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -51,7 +51,7 @@ export const MenuItem = styled.a`
 
 export const LoginButton = styled.button`
     background-color: ${({ theme }) => theme.colors.primary};
-    color: white;
+    color: ${({ theme }) => theme.colors.secondary};
     border: none;
     border-radius: 20px;
     padding: 10px 20px;

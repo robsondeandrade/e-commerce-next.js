@@ -1,4 +1,5 @@
 import React from 'react'
+import { parseCookies } from 'nookies'
 import { useDispatch } from 'react-redux'
 import { RiShoppingBag3Line } from 'react-icons/ri'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
@@ -11,8 +12,10 @@ import * as S from './styles'
 
 export const CardProduct = ({ product }: IParamsComponent) => {
     const { title, thumbnail, available_quantity, price, id } = product
+    const cookies = parseCookies()
+    const token = cookies['accessToken']
     const dispatch = useDispatch()
-    const { addFavorite, removeFavorite, favorites } = useFavorite()
+    const { addFavorite, removeFavorite, favorites } = useFavorite(token)
     const { data } = favorites
     const favoriteProduct = data?.find((favorite: Favorite) => favorite.favoriteId === id)
 

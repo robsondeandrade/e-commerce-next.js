@@ -61,7 +61,7 @@ export const SubmitButton = styled.button`
     }
 
     &:disabled {
-        background-color: #cccccc;
+        background-color: ${({ theme }) => theme.colors.gray[400]};
         cursor: not-allowed;
         filter: none;
     }

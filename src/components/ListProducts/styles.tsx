@@ -5,8 +5,10 @@ export const Container = styled.div`
     flex-direction: column;
     max-width: 1438px;
     flex-wrap: wrap;
-    margin: 150px auto 0;
+    margin: 0 auto;
+
     justify-content: center;
+    background-color: ${({ theme }) => theme.colors.secondary};
     @media (max-width: 851px) {
         align-items: center;
     }
@@ -24,6 +26,8 @@ export const BoxSortSelect = styled.div`
 `
 export const Title = styled.h1`
     font-size: 24px;
+    margin-top: 150px;
+
     @media (min-width: 851px) {
         margin-left: 32px;
     }
