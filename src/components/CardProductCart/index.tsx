@@ -1,34 +1,34 @@
 import { useCallback, useMemo } from 'react'
-import { useDispatch } from 'react-redux'
-import { removeProduct, decreaseQuantity, increaseQuantity } from '@/stores/productSlice'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { IParamsComponent } from './types'
+import { useCart } from '@/hooks/useCart'
 import * as S from './styles'
 
 export const CardProductCart = ({ product }: IParamsComponent) => {
-    const dispatch = useDispatch()
+    const { addCart, removeFromCart } = useCart()
+
     const { id, title, thumbnail, quantity, available_quantity, price } = product
 
     const isDecreaseDisabled = quantity === 1
-    const isIncreaseDisabled = quantity === available_quantity
+    const isIncreaseDisabled = quantity >= available_quantity
 
     const total = useMemo(() => formatCurrency(price * quantity), [price, quantity])
 
     const handleRemoveProduct = useCallback(() => {
-        dispatch(removeProduct(id))
-    }, [dispatch, id])
+        removeFromCart(id)
+    }, [id])
 
     const handleIncreaseQuantity = useCallback(() => {
         if (quantity < available_quantity) {
-            dispatch(increaseQuantity(id))
+            addCart({ ...product, quantity: quantity + 1 })
         }
-    }, [dispatch, id, quantity, available_quantity])
+    }, [id, quantity, available_quantity])
 
     const handleDecreaseQuantity = useCallback(() => {
         if (quantity > 1) {
-            dispatch(decreaseQuantity(id))
+            addCart({ ...product, quantity: quantity - 1 })
         }
-    }, [dispatch, id, quantity])
+    }, [id, quantity])
 
     return (
         <S.Container>

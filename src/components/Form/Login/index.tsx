@@ -1,7 +1,6 @@
 'use client'
-import { useState } from 'react'
 import { setCookie } from 'nookies'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,19 +11,17 @@ import { ModalToast } from '@/components/Modals/ModalToast'
 import { LoadingSpinner } from '@/components/Loading/LoadingSpinner'
 import { AxiosError } from '@/services/AuthService/type'
 import { loginSchema, defaultValues } from './constants'
-import { FormData, ToastInfo } from './type'
+import { FormData } from './type'
 import { setUser } from '@/stores/userSlice'
+import { RootStateToast } from '@/stores/toast/types'
+import { hideToast, showToast } from '@/stores/toast'
 import * as S from './styles'
 
 export const Login = () => {
     const router = useRouter()
     const { mutate: doLogin, isLoading } = useLogin()
+    const toast = useSelector((state: RootStateToast) => state.toastData.toastInfo)
     const dispatch = useDispatch()
-    const [toastInfo, setToastInfo] = useState<ToastInfo>({
-        message: '',
-        color: 'success',
-        isVisible: false,
-    })
 
     const {
         register,
@@ -56,12 +53,13 @@ export const Login = () => {
                 const axiosError = error as AxiosError
                 const errorMessage =
                     axiosError.response?.data.message || 'Ocorreu um erro desconhecido.'
-
-                setToastInfo({
-                    message: errorMessage,
-                    color: 'error',
-                    isVisible: true,
-                })
+                dispatch(
+                    showToast({
+                        message: errorMessage,
+                        color: 'error',
+                        isVisible: true,
+                    }),
+                )
             },
         })
     }
@@ -87,10 +85,10 @@ export const Login = () => {
                     error={errors.password?.message}
                 />
                 <ModalToast
-                    color={toastInfo.color}
-                    message={toastInfo.message}
-                    isVisible={toastInfo.isVisible}
-                    setIsVisible={(isVisible) => setToastInfo({ ...toastInfo, isVisible })}
+                    color={toast.color}
+                    message={toast.message}
+                    isVisible={toast.isVisible}
+                    setIsVisible={() => dispatch(hideToast())}
                 />
 
                 <S.TextButton

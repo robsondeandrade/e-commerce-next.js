@@ -1,5 +1,4 @@
 'use client'
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -10,18 +9,18 @@ import { LoadingSpinner } from '@/components/Loading/LoadingSpinner'
 import { ModalToast } from '@/components/Modals/ModalToast'
 import { AxiosError } from '@/services/AuthService/type'
 import { createUserSchema, defaultValues } from './constants'
-import { ToastInfo } from '../Login/type'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootStateToast } from '@/stores/toast/types'
 import { FormData } from './type'
+import { hideToast, showToast } from '@/stores/toast'
 import * as S from './styles'
 
 export const CreateUser = () => {
     const router = useRouter()
     const { mutate: doLogin, isLoading, isError } = useCreateUser()
-    const [toastInfo, setToastInfo] = useState<ToastInfo>({
-        message: '',
-        color: 'success',
-        isVisible: false,
-    })
+    const toast = useSelector((state: RootStateToast) => state.toastData.toastInfo)
+    const dispatch = useDispatch()
+
     const {
         watch,
         register,
@@ -40,22 +39,26 @@ export const CreateUser = () => {
     const onSubmit = (data: FormData) => {
         doLogin(data, {
             onSuccess: () => {
-                setToastInfo({
-                    message: 'Operação bem-sucedida!',
-                    color: 'success',
-                    isVisible: true,
-                })
+                dispatch(
+                    showToast({
+                        message: 'Operação bem-sucedida!',
+                        color: 'success',
+                        isVisible: true,
+                    }),
+                )
                 router.push('/login')
             },
             onError: (error) => {
                 const axiosError = error as AxiosError
                 const errorMessage =
                     axiosError.response?.data.message || 'Ocorreu um erro desconhecido.'
-                setToastInfo({
-                    message: errorMessage,
-                    color: 'error',
-                    isVisible: true,
-                })
+                dispatch(
+                    showToast({
+                        message: errorMessage,
+                        color: 'error',
+                        isVisible: true,
+                    }),
+                )
             },
         })
     }
@@ -109,10 +112,10 @@ export const CreateUser = () => {
                 </S.SubmitButton>
             </S.LoginForm>
             <ModalToast
-                color={toastInfo.color}
-                message={toastInfo.message}
-                isVisible={toastInfo.isVisible}
-                setIsVisible={(isVisible) => setToastInfo({ ...toastInfo, isVisible })}
+                color={toast.color}
+                message={toast.message}
+                isVisible={toast.isVisible}
+                setIsVisible={() => dispatch(hideToast())}
             />
         </S.LoginContainer>
     )

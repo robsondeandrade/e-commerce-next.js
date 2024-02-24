@@ -1,5 +1,6 @@
-import { IProducts } from '@/stores/productSlice/types'
+import { IProducts } from '@/services/ProductService/types'
 
 export interface IParamsComponent {
     product: IProducts
+    isFavorite?: boolean
 }

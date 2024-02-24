@@ -1,16 +1,32 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { CardProductCart } from '../../CardProductCart'
 import { calculateTotalAmount } from '@/utils/calculateTotalAmount'
 import { formatCurrency } from '@/utils/formatCurrency'
-import { IProducts, RootState } from '@/stores/productSlice/types'
 import { IParamsComponent } from './types'
+import { useCart } from '@/hooks/useCart'
+import { showToast } from '@/stores/toast'
+import { IProducts } from '@/services/ProductService/types'
 import * as S from './styles'
 
 export const ModalCart = ({ isOpen, onClose }: IParamsComponent) => {
-    const products = useSelector((state: RootState) => state.userShoppingData.products)
+    const { products, clearCart } = useCart()
+    const dispatch = useDispatch()
 
     if (!isOpen) return null
     const total = calculateTotalAmount(products)
+
+    const handleTeste = () => {
+        onClose()
+        dispatch(
+            showToast({
+                message:
+                    'Sucesso! Sua compra foi realizada com êxito. 🎉 Prepare-se para momentos incríveis!',
+                color: 'success',
+                isVisible: true,
+            }),
+        )
+        clearCart()
+    }
 
     return (
         <S.ModalOverlay onClick={() => onClose()}>
@@ -49,7 +65,7 @@ export const ModalCart = ({ isOpen, onClose }: IParamsComponent) => {
                             <S.ValueCurrency>Total:</S.ValueCurrency>
                             <S.ValueCurrency>R${formatCurrency(total)}</S.ValueCurrency>
                         </S.ContentValue>
-                        <S.ContentBotton>
+                        <S.ContentBotton onClick={handleTeste}>
                             <S.FinishPurchase>Finalizar Compra</S.FinishPurchase>
                         </S.ContentBotton>
                     </S.FooterContent>

@@ -10,10 +10,17 @@ import { SearchField } from '../SearchField'
 import { LoadingOverlay } from '../Loading/LoadingOverlay'
 import { SortSelect } from '../SortSelect'
 import { SortOrder } from '../SortSelect/constants'
-import { IProducts } from '@/stores/productSlice/types'
+import { RootStateToast } from '@/stores/toast/types'
+import { useDispatch, useSelector } from 'react-redux'
+import { ModalToast } from '../Modals/ModalToast'
+import { hideToast } from '@/stores/toast'
+import { IProducts } from '@/services/ProductService/types'
 import * as S from './styles'
 
 export const ListProducts = () => {
+    const toast = useSelector((state: RootStateToast) => state.toastData.toastInfo)
+    const dispatch = useDispatch()
+
     const [searchTerm, setSearchTerm] = useState('')
     const [currentPage, setCurrentPage] = useState(INITIAL_PAGE)
     const [itemsPerPage, setItemsPerPage] = useState(ITEMS_PER_PAGE)
@@ -90,6 +97,12 @@ export const ListProducts = () => {
                     totalPages={totalPages}
                 />
             )}
+            <ModalToast
+                color={toast.color}
+                message={toast.message}
+                isVisible={toast.isVisible}
+                setIsVisible={() => dispatch(hideToast())}
+            />
         </S.Container>
     )
 }

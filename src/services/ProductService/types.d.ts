@@ -4,3 +4,12 @@ export interface IGetProductsParams {
     limit?: number
     sort?: string
 }
+export interface IProducts {
+    id: string
+    title: string
+    thumbnail: string
+    productId: string
+    available_quantity: number
+    price: number
+    quantity: number
+}

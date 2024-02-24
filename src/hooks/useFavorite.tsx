@@ -1,16 +1,18 @@
+'use client'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { FavoriteService } from '@/services/FavoriteService/favoriteService'
 import { Favorite } from '@/services/FavoriteService/type'
+import { parseCookies } from 'nookies'
 
-const FAVORITES_QUERY_KEY = 'favorites'
-
-export const useFavorite = (token?: string | undefined) => {
+export const useFavorite = () => {
+    const cookies = parseCookies()
+    const token = cookies['accessToken']
     const favoriteService = new FavoriteService()
     const queryClient = useQueryClient()
 
-    const invalidateFavorites = () => queryClient.invalidateQueries(FAVORITES_QUERY_KEY)
+    const invalidateFavorites = () => queryClient.invalidateQueries('favorites')
 
-    const favorites = useQuery(FAVORITES_QUERY_KEY, favoriteService.getFavorites, {
+    const { data: favorites, isLoading } = useQuery('favorites', favoriteService.getFavorites, {
         enabled: !!token,
     })
 
@@ -24,5 +26,5 @@ export const useFavorite = (token?: string | undefined) => {
         { onSuccess: invalidateFavorites },
     )
 
-    return { addFavorite, removeFavorite, favorites }
+    return { addFavorite, removeFavorite, favorites, isLoading }
 }

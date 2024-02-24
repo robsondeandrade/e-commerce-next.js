@@ -24,17 +24,19 @@ async function refreshAccessToken() {
     }
 
     const response = await api.post(`/refresh-token`, { refreshToken })
-    console.log('response', response)
     return response.data
 }
 
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
-        if (error.response && error.response.status === 401) {
+        if (
+            error.response &&
+            error.response.status === 401 &&
+            !error.config.url.includes('/login')
+        ) {
             try {
                 const data = await refreshAccessToken()
-                console.log('data', data)
 
                 setCookie(null, 'accessToken', data.accessToken.newAccessToken, { path: '/' })
                 setCookie(null, 'refreshToken', data.accessToken.newRefreshToken, { path: '/' })
@@ -47,7 +49,6 @@ api.interceptors.response.use(
                     destroyCookie(null, cookieName, { path: '/' })
                 })
                 if (typeof window !== 'undefined') {
-                    console.log(refreshError)
                     window.location.href = '/login'
                 }
                 return Promise.reject(refreshError)

@@ -1,4 +1,4 @@
-import { IProducts } from '@/stores/productSlice/types'
+import { IProducts } from '@/services/ProductService/types'
 
 export const calculateTotalAmount = (products: IProducts[]) => {
     let totalAmount = 0

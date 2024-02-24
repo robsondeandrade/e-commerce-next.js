@@ -1,18 +1,17 @@
 'use client'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
 import { usePathname } from 'next/navigation'
 import { ModalCart } from '../Modals/ModalCart'
-import { RootState } from '@/stores/productSlice/types'
 import UserMenu from '../UserMenu'
 import { useRouter } from 'next/navigation'
+import { useCart } from '@/hooks/useCart'
 import * as S from './styles'
 
 const Header = () => {
     const router = useRouter()
     const pathname = usePathname()
-    const products = useSelector((state: RootState) => state.userShoppingData.products)
     const [openModal, setOpenModal] = useState(false)
+    const { products } = useCart()
 
     const isExcludedRoute = () => {
         const excludedRoutes = ['/login', '/register']
@@ -28,7 +27,7 @@ const Header = () => {
         <S.HeaderContainer>
             <S.LogoContainer onClick={() => router.push('/')}>
                 <S.MainLogo>RBS</S.MainLogo>
-                <S.SubLogo>Sistemas</S.SubLogo>
+                <S.SubLogo>Digital</S.SubLogo>
             </S.LogoContainer>
             <S.Box>
                 <S.CartContainer
