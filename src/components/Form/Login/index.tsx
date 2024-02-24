@@ -84,12 +84,6 @@ export const Login = () => {
                     {...register('password')}
                     error={errors.password?.message}
                 />
-                <ModalToast
-                    color={toast.color}
-                    message={toast.message}
-                    isVisible={toast.isVisible}
-                    setIsVisible={() => dispatch(hideToast())}
-                />
 
                 <S.TextButton
                     type='button'
@@ -105,6 +99,12 @@ export const Login = () => {
                     {isLoading ? <LoadingSpinner /> : 'Entrar'}
                 </S.SubmitButton>
             </S.LoginForm>
+            <ModalToast
+                color={toast.color}
+                message={toast.message}
+                isVisible={toast.isVisible}
+                setIsVisible={() => dispatch(hideToast())}
+            />
         </S.LoginContainer>
     )
 }

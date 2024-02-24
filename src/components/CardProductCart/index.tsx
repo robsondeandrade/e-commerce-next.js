@@ -3,14 +3,16 @@ import { formatCurrency } from '@/utils/formatCurrency'
 import { IParamsComponent } from './types'
 import { useCart } from '@/hooks/useCart'
 import * as S from './styles'
+import { useDispatch } from 'react-redux'
+import { showToast } from '@/stores/toast'
 
 export const CardProductCart = ({ product }: IParamsComponent) => {
     const { addCart, removeFromCart } = useCart()
+    const dispatch = useDispatch()
 
     const { id, title, thumbnail, quantity, available_quantity, price } = product
 
     const isDecreaseDisabled = quantity === 1
-    const isIncreaseDisabled = quantity >= available_quantity
 
     const total = useMemo(() => formatCurrency(price * quantity), [price, quantity])
 
@@ -19,7 +21,17 @@ export const CardProductCart = ({ product }: IParamsComponent) => {
     }, [id])
 
     const handleIncreaseQuantity = useCallback(() => {
-        addCart({ ...product, quantity: quantity + 1 })
+        if (quantity < available_quantity) {
+            addCart({ ...product, quantity: quantity + 1 })
+        } else {
+            dispatch(
+                showToast({
+                    message: 'Desculpe, não há mais unidades disponíveis deste produto no momento.',
+                    color: 'error',
+                    isVisible: true,
+                }),
+            )
+        }
     }, [id, quantity, available_quantity])
 
     const handleDecreaseQuantity = useCallback(() => {

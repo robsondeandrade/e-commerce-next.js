@@ -4,18 +4,21 @@ import { calculateTotalAmount } from '@/utils/calculateTotalAmount'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { IParamsComponent } from './types'
 import { useCart } from '@/hooks/useCart'
-import { showToast } from '@/stores/toast'
+import { hideToast, showToast } from '@/stores/toast'
 import { IProducts } from '@/services/ProductService/types'
 import * as S from './styles'
+import { ModalToast } from '../ModalToast'
+import { RootStateToast } from '@/stores/toast/types'
 
 export const ModalCart = ({ isOpen, onClose }: IParamsComponent) => {
     const { products, clearCart } = useCart()
     const dispatch = useDispatch()
+    const toast = useSelector((state: RootStateToast) => state.toastData.toastInfo)
 
     if (!isOpen) return null
     const total = calculateTotalAmount(products)
 
-    const handleTeste = () => {
+    const handleCompletePurchase = () => {
         onClose()
         dispatch(
             showToast({
@@ -65,11 +68,17 @@ export const ModalCart = ({ isOpen, onClose }: IParamsComponent) => {
                             <S.ValueCurrency>Total:</S.ValueCurrency>
                             <S.ValueCurrency>R${formatCurrency(total)}</S.ValueCurrency>
                         </S.ContentValue>
-                        <S.ContentBotton onClick={handleTeste}>
+                        <S.ContentBotton onClick={handleCompletePurchase}>
                             <S.FinishPurchase>Finalizar Compra</S.FinishPurchase>
                         </S.ContentBotton>
                     </S.FooterContent>
                 )}
+                <ModalToast
+                    color={toast.color}
+                    message={toast.message}
+                    isVisible={toast.isVisible}
+                    setIsVisible={() => dispatch(hideToast())}
+                />
             </S.ModalContent>
         </S.ModalOverlay>
     )
