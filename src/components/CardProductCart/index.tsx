@@ -19,9 +19,7 @@ export const CardProductCart = ({ product }: IParamsComponent) => {
     }, [id])
 
     const handleIncreaseQuantity = useCallback(() => {
-        if (quantity < available_quantity) {
-            addCart({ ...product, quantity: quantity + 1 })
-        }
+        addCart({ ...product, quantity: quantity + 1 })
     }, [id, quantity, available_quantity])
 
     const handleDecreaseQuantity = useCallback(() => {
