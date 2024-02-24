@@ -53,10 +53,7 @@ export const CardProductCart = ({ product }: IParamsComponent) => {
                                     -
                                 </S.TypographyValue>
                                 <S.TypographyValue>{quantity}</S.TypographyValue>
-                                <S.TypographyValue
-                                    $isDisabled={isIncreaseDisabled}
-                                    onClick={handleIncreaseQuantity}
-                                >
+                                <S.TypographyValue onClick={handleIncreaseQuantity}>
                                     +
                                 </S.TypographyValue>
                             </S.ContentQuantity>
