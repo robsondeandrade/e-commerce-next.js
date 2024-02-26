@@ -48,7 +48,7 @@ export const ModalCart = ({ isOpen, onClose }: IParamsComponent) => {
                     </S.CloseButton>
                 </S.HeaderContent>
                 <S.BodyContent>
-                    {products.length ? (
+                    {products?.length ? (
                         <>
                             {products?.map((product: IProducts) => (
                                 <CardProductCart
@@ -62,7 +62,7 @@ export const ModalCart = ({ isOpen, onClose }: IParamsComponent) => {
                     )}
                 </S.BodyContent>
 
-                {products.length !== 0 && (
+                {products?.length !== 0 && (
                     <S.FooterContent>
                         <S.ContentValue>
                             <S.ValueCurrency>Total:</S.ValueCurrency>

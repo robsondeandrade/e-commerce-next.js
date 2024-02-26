@@ -34,7 +34,7 @@ export const CloseButton = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 38px;
+    min-width: 38px;
     height: 38px;
     border-radius: 50%;
     cursor: pointer;
