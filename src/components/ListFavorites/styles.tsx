@@ -41,7 +41,7 @@ export const Content = styled.div`
     justify-content: center;
 `
 
-export const HomeButton = styled.a`
+export const HomeButton = styled.div`
     display: inline-block;
     background-color: ${({ theme }) => theme.colors.primary};
     color: #ffffff;
