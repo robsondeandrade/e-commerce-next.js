@@ -25,7 +25,10 @@ const Header = () => {
 
     return (
         <S.HeaderContainer>
-            <S.LogoContainer onClick={() => router.push('/')}>
+            <S.LogoContainer
+                data-testid='logo-container'
+                onClick={() => router.push('/')}
+            >
                 <S.MainLogo>RBS</S.MainLogo>
                 <S.SubLogo>Digital</S.SubLogo>
             </S.LogoContainer>
