@@ -7,7 +7,7 @@ export interface ModalToastProps {
 }
 
 export interface ToastContainerProps {
-    isVisible: boolean
+    $isVisible: boolean
     color: 'success' | 'error'
     duration: number
 }

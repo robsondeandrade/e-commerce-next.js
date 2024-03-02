@@ -32,7 +32,10 @@ export const ModalCart = ({ isOpen, onClose }: IParamsComponent) => {
     }
 
     return (
-        <S.ModalOverlay onClick={() => onClose()}>
+        <S.ModalOverlay
+            data-testid='modal-overlay'
+            onClick={() => onClose()}
+        >
             <S.ModalContent
                 data-testid='cart-modal'
                 onClick={(e) => e.stopPropagation()}

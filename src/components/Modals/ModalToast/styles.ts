@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { ToastContainerProps } from './type'
 
 export const ToastContainer = styled.div<ToastContainerProps>`
-    display: ${({ isVisible }) => (isVisible ? 'flex' : 'none')};
+    display: ${({ $isVisible }) => ($isVisible ? 'flex' : 'none')};
     position: fixed;
     top: 20px;
     right: 20px;

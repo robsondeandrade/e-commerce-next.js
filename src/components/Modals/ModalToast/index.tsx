@@ -18,7 +18,7 @@ export const ModalToast: React.FC<ModalToastProps> = ({
 
     return (
         <S.ToastContainer
-            isVisible={isVisible}
+            $isVisible={isVisible}
             color={color}
             duration={duration / 1000}
         >
