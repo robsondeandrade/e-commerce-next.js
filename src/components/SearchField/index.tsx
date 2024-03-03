@@ -18,7 +18,12 @@ export const SearchField = ({ onSearch }: SearchFieldProps) => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
             />
-            <S.SearchButton onClick={handleSearch}>Buscar</S.SearchButton>
+            <S.SearchButton
+                data-testid='button-seach'
+                onClick={handleSearch}
+            >
+                Buscar
+            </S.SearchButton>
         </S.SearchContainer>
     )
 }

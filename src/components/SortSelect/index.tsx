@@ -5,7 +5,10 @@ import * as S from './styles'
 
 export const SortSelect = ({ onChange }: ISortSelectProps) => {
     return (
-        <S.StyledSelect onChange={(e) => onChange(e.target.value as SortOrder)}>
+        <S.StyledSelect
+            data-testid='sort-order-select'
+            onChange={(e) => onChange(e.target.value as SortOrder)}
+        >
             {sortOptions.map((option) => (
                 <option
                     key={option.value}
