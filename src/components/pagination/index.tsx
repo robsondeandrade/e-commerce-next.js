@@ -1,6 +1,7 @@
 import { FaAngleLeft, FaAngleRight, FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
 import { ICustomPaginationProps } from './types'
 import * as S from './styles'
+import { ITEMS_PER_PAGE_OPTIONS } from './constants'
 
 export const CustomPagination = ({
     selected,
@@ -23,6 +24,7 @@ export const CustomPagination = ({
                 <S.PageButton
                     key={page}
                     $active={page === currentPage}
+                    disabled={page === currentPage}
                     onClick={() => handlePageChange(page)}
                 >
                     {page}
@@ -36,6 +38,7 @@ export const CustomPagination = ({
     return (
         <S.Wrapper>
             <S.PageButton
+                data-testid='first-page'
                 disabled={isPreviousDisabled}
                 onClick={() => handlePageChange(1)}
             >
@@ -43,6 +46,7 @@ export const CustomPagination = ({
             </S.PageButton>
 
             <S.PageButton
+                data-testid='previous-page'
                 disabled={isPreviousDisabled}
                 onClick={() => handlePageChange(currentPage - 1)}
             >
@@ -53,12 +57,14 @@ export const CustomPagination = ({
 
             <S.PageButton
                 disabled={isNextDisabled}
+                data-testid='next-page'
                 onClick={() => handlePageChange(currentPage + 1)}
             >
                 <FaAngleRight />
             </S.PageButton>
 
             <S.PageButton
+                data-testid='last-page'
                 disabled={isNextDisabled}
                 onClick={() => handlePageChange(totalPages)}
             >
@@ -68,8 +74,9 @@ export const CustomPagination = ({
             <S.PageSelect
                 value={selected}
                 onChange={(e) => handleSelectPerPage(Number(e.target.value))}
+                data-testid='select-per-page'
             >
-                {[10, 20, 30].map((option) => (
+                {ITEMS_PER_PAGE_OPTIONS.map((option) => (
                     <option
                         key={option}
                         value={option}
